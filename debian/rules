@@ -1,0 +1,22 @@
+#! /usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,-O1 -Wl,-z,defs
+
+ifneq (,$(filter $(DEB_HOST_ARCH), amd64 arm64 armel armhf i386 mips64el mipsel ppc64el s390x powerpc ppc64 riscv64 sparc64))
+ENABLE_RSVG = -Dlibrsvg=true
+else
+ENABLE_RSVG = -Dlibrsvg=false
+endif
+
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- -Dgtk_doc=true -Dlibportal=false $(ENABLE_RSVG)
+
+override_dh_girepository:
+	dh_girepository -ldebian/tmp/usr/share/eog/gir-1.0/ /usr/lib/$(DEB_HOST_MULTIARCH)/eog /usr/lib/$(DEB_HOST_MULTIARCH)/eog/girepository-1.0/
+
+override_dh_gnome_clean:
