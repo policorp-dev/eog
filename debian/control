@@ -1,8 +1,7 @@
 Source: eog
 Section: gnome
 Priority: optional
-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Amin Bandali <bandali@ubuntu.com>, Jeremy Bícha <jbicha@ubuntu.com>
+Maintainer: Edson Juliano Drosdeck <edson@policorp.com.br>
 Build-Depends: debhelper-compat (= 13),
                dh-sequence-gir,
                dh-sequence-gnome,
@@ -31,9 +30,6 @@ Build-Depends: debhelper-compat (= 13),
                libgtk-3-doc
 Rules-Requires-Root: no
 Standards-Version: 4.7.0
-Vcs-Browser: https://salsa.debian.org/gnome-team/eog
-Vcs-Git: https://salsa.debian.org/gnome-team/eog.git
-Homepage: https://wiki.gnome.org/Apps/EyeOfGnome
 
 Package: eog
 Architecture: any
